@@ -31,19 +31,19 @@ vector<vector<int>> zeroMatrix(vector<vector<int>> &matrix, int n, int m) {
 	*/
 
 	//check the intial 0's
-	for(int i=0; i<n; i++)
+	for(int i=0; i<n; i++)      //O(n*m)
 	{
 		for(int j=0; j<m; j++)
 		{
 			if(matrix[i][j] == 0)
 			{
-				setRow(i, matrix, m);
-				setColumn(j, matrix, n);
+				setRow(i, matrix, m);   //O(m): for a given row, traverse the column
+				setColumn(j, matrix, n);    //O(n): for a given column, traverse the row
 			}
 		}
 	}
 
-	for(int i=0; i<n; i++)
+	for(int i=0; i<n; i++)      //O(n*m)
 	{
 		for(int j=0; j<m; j++)
 		{
@@ -55,3 +55,8 @@ vector<vector<int>> zeroMatrix(vector<vector<int>> &matrix, int n, int m) {
 	}
 	return matrix;
 }
+
+/*
+    Time Complexity: O(n*m)*(O(n)+O(m)) + O(n*m)
+                   ~ n^3
+*/
